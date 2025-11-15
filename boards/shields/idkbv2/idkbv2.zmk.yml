@@ -1,0 +1,14 @@
+
+file_format: "1"
+id: idkbv2
+name: idkbv2
+type: shield
+features:
+  - keys
+  - studio
+outputs:
+  - usb
+  - ble
+siblings:
+  - idkbv2_left
+  - idkbv2_right
