@@ -3,7 +3,7 @@
 #include <dt-bindings/zmk/input_transform.h>
 #include "layouts.dtsi"
 
- / {
+/ {
     chosen {
         zmk,physical-layout = &physical_layout0;
     };
@@ -41,6 +41,15 @@
             ;
     };
 
+    /* 左手側トラックボール: すべてのレイヤーでスクロール専用にする */
+    trackball_listener: trackball_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball>;
+        input-processors = <
+            &zip_xy_to_scroll_mapper    /* XY 移動 → 垂直/水平スクロールに変換 */
+        >;
+    };
+
     split_inputs {
         #address-cells = <1>;
         #size-cells = <0>;
@@ -50,6 +59,16 @@
             reg = <0>;
             device = <&trackball>;
         };
+    };
+
+    /* （必要なら）split 経由の入力もスクロールにしたい場合 */
+    trackball_split_listener: trackball_split_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball_split>;
+        status = "okay";
+        input-processors = <
+            &zip_xy_to_scroll_mapper
+        >;
     };
 };
 
@@ -92,11 +111,4 @@
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio0 15 GPIO_ACTIVE_LOW>;
     };
-};
-
-/* ここでトラックボールを全レイヤーでスクロール専用にする */
-&trackball_listener {
-    input-processors = <
-        &zip_xy_to_scroll_mapper
-    >;
 };
