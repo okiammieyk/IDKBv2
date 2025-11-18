@@ -107,3 +107,11 @@
         irq-gpios = <&gpio0 15 GPIO_ACTIVE_LOW>;
     };
 };
+
+/* トラックボールのマウス移動速度を 1.5倍にする */
+&trackball_listener {
+    input-processors = <
+        &zip_pointing_scaler 3 2
+    >;
+};
+
