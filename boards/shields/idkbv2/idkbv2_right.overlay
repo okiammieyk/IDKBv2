@@ -46,12 +46,7 @@
     trackball_listener: trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
-        // まず XY の反転をかけてから…
-        // その結果をスクロールイベントにマップする
-        input-processors = <
-            &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
-            &zip_xy_to_scroll_mapper
-        >;
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
     };
 
     split_inputs {
@@ -68,11 +63,9 @@
         compatible = "zmk,input-listener";
         device = <&trackball_split>;
         status = "okay";
-        input-processors = <
-            &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
-            &zip_xy_to_scroll_mapper
-        >;
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
     };
+};
 
 &physical_layout0 {
     kscan = <&kscan0>;
@@ -114,4 +107,3 @@
         irq-gpios = <&gpio0 15 GPIO_ACTIVE_LOW>;
     };
 };
-
