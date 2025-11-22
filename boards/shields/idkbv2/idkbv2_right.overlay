@@ -46,8 +46,9 @@
         compatible = "zmk,input-listener";
         device = <&trackball>;
         input-processors = <
-            &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
-            &zip_xy_scaler 3 2   /* マウス移動量を 1.5倍 (3/2) にスケール */
+            /* SWAPを追加し、Y_INVERTを削除しました */
+            &zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)
+            &zip_xy_scaler 3 2
         >;
     };
 
@@ -66,8 +67,9 @@
         device = <&trackball_split>;
         status = "okay";
         input-processors = <
-            &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
-            &zip_xy_scaler 3 2   /* 分割入力側も同じく 1.5倍 */
+            /* 分割側も同様に設定 */
+            &zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)
+            &zip_xy_scaler 3 2
         >;
     };
 };
