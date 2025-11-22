@@ -65,13 +65,21 @@
 		compatible = "zmk,input-listener";
 		device = <&trackball_split>;
 		status = "okay";
-		/* 修正箇所: SWAP と X_INVERT の組み合わせに変更 */
+		/* カーソル移動用: メイン側と同じ補正(SWAP + X_INVERT)を適用 */
 		input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>;
-		
-        /* スクロール設定も合わせるならここも変更が必要ですが、まずはカーソル移動を確認してください */
+
 		scroller {
 			layers = <0>;
-			input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT)>, <&zip_scroll_scaler 1 128>;
+			/* 修正ポイント:
+			   1. 先頭に zip_xy_transform を追加し、センサーの向き(SWAP+X_INVERT)を正してからスクロール機能に渡します。
+			      これで「右→右スクロール」「下→下スクロール」になります。
+			   2. zip_scroll_scaler を <1 85> に変更し、速度を約1.5倍(128/85倍)にしました。
+			*/
+			input-processors = 
+				<&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+				<&zip_xy_to_scroll_mapper>,
+				<&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT)>,
+				<&zip_scroll_scaler 1 85>;
 			process-next;
 		};
 	};
