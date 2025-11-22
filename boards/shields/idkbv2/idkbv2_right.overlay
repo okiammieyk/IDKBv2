@@ -120,7 +120,7 @@
         device = <&trackball_split>;
         
         /* ★ここに有効にしたいレイヤー番号をスペース区切りで書く★ */
-        layers = <1 2>; 
+        layers = <1>; 
         
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
