@@ -46,7 +46,8 @@
     trackball_listener: trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
+        // X/Y を入れ替え + 両軸反転
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_SWAP_XY | INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
     };
 
     split_inputs {
@@ -63,13 +64,16 @@
         compatible = "zmk,input-listener";
         device = <&trackball_split>;
         status = "okay";
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
-		scroller {
-		    layers = <0>;
-	        input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT)>, <&zip_scroll_scaler 1 128>;
-	        process-next;
-   		 };
+        // X/Y を入れ替え + 両軸反転（上と合わせる）
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_SWAP_XY | INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
+        scroller {
+            layers = <0>;
+            // スクロールの向きが気になればここも同様に調整可能
+            input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT)>, <&zip_scroll_scaler 1 128>;
+            process-next;
+        };
     };
+
 };
 
 &physical_layout0 {
