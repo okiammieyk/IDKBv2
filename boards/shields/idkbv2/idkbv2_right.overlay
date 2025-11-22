@@ -90,7 +90,7 @@
         >;
     };
 
-    /* ▼▼▼ スクロール設定（修正版） ▼▼▼ */
+    /* ▼▼▼ スクロール設定（タイムアウト追加版） ▼▼▼ */
     
     /* 縦スクロール (レイヤー1, 2のみ) */
     scroll_listener_y {
@@ -98,15 +98,15 @@
         device = <&trackball_split>;
         layers = <1 2>; 
         evt-type = <INPUT_EV_REL>;
-        
-        /* 修正点1: 生データの「X軸」を監視する（90度回転しているので、生のXが縦になる） */
-        x-input-code = <INPUT_REL_X>; 
+        x-input-code = <INPUT_REL_X>; /* 生データX軸(縦)を監視 */
         
         scale-multiplier = <1>;
-        /* 修正点2: 数値を64まで上げて感度を下げる（ノイズ対策） */
-        scale-divisor = <64>; 
+        scale-divisor = <30>; /* 感度調整 */
+
+        /* ★重要: 30ms入力がなければオフにする設定★ */
+        time-to-wait-ms = <30>;
         
-        /* バインディング: 動きが逆なら UP と DOWN を入れ替えてください */
+        /* もし方向が逆なら DOWN と UP を入れ替えてください */
         bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
     };
 
@@ -116,14 +116,15 @@
         device = <&trackball_split>;
         layers = <1 2>; 
         evt-type = <INPUT_EV_REL>;
-        
-        /* 修正点3: 生データの「Y軸」を監視する（90度回転しているので、生のYが横になる） */
-        x-input-code = <INPUT_REL_Y>; 
+        x-input-code = <INPUT_REL_Y>; /* 生データY軸(横)を監視 */
         
         scale-multiplier = <1>;
-        scale-divisor = <64>; 
+        scale-divisor = <30>; /* 感度調整 */
+
+        /* ★重要: タイムアウト設定★ */
+        time-to-wait-ms = <30>;
         
-        /* バインディング: 動きが逆なら LEFT と RIGHT を入れ替えてください */
+        /* もし方向が逆なら LEFT と RIGHT を入れ替えてください */
         bindings = <&msc SCRL_LEFT>, <&msc SCRL_RIGHT>;
     };
 };
