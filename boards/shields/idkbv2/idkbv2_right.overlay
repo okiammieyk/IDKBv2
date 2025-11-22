@@ -99,7 +99,7 @@
     scroll_listener_y {
         compatible = "zmk,input-behavior-listener";
         device = <&trackball_split>;
-        layers = <1 2>; /* 有効にするレイヤー */
+        layers = <0>; /* 有効にするレイヤー */
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_Y>; /* Y軸(縦)の動きを監視 */
         scale-multiplier = <1>;
