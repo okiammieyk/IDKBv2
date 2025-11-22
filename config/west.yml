@@ -11,11 +11,11 @@ manifest:
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    # ▼ 既存のPAW3222ドライバー (これがないとボールが反応しません)
+    # ▼ 必須: トラックボールを動かすためのドライバー
     - name: zmk-driver-paw3222
       remote: sekigon-gonnoc
       revision: main
-    # ▼ 今回追加するスクロール拡張機能 (これがないとMapperが動きません)
+    # ▼ 必須: スクロール機能を実現するためのモジュール
     - name: zmk-input-behavior-listener
       remote: badjeff
       revision: main
