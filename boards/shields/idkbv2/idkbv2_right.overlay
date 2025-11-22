@@ -12,7 +12,6 @@
 
     /* ▼▼▼ 1. 定義エリア ▼▼▼ */
 
-    /* 右手用スケーラー（マウスカーソル速度調整） */
     zip_x_scaler: zip_x_scaler {
         compatible = "zmk,input-processor-scaler";
         #input-processor-cells = <2>;
@@ -25,8 +24,6 @@
         type = <INPUT_EV_REL>;
         codes = <INPUT_REL_Y>;
     };
-
-    /* ▲▲▲ エラーの原因だった ib_scroll_x 等は削除しました ▲▲▲ */
 
     default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
@@ -81,7 +78,7 @@
         };
     };
 
-    /* 左手設定その1：マウスカーソル（全レイヤーで有効） */
+    /* 左手設定その1：マウスカーソル（全レイヤー） */
     trackball_split_listener: trackball_split_listener {
         compatible = "zmk,input-listener";
         device = <&trackball_split>;
@@ -93,35 +90,40 @@
         >;
     };
 
-    /* ▼▼▼ ここからスクロール設定 ▼▼▼ */
+    /* ▼▼▼ スクロール設定（修正版） ▼▼▼ */
     
-    /* 左手設定その2：縦スクロール (レイヤー1, 2のみ) */
+    /* 縦スクロール (レイヤー1, 2のみ) */
     scroll_listener_y {
         compatible = "zmk,input-behavior-listener";
         device = <&trackball_split>;
-        layers = <0>; /* 有効にするレイヤー */
+        layers = <1 2>; 
         evt-type = <INPUT_EV_REL>;
-        x-input-code = <INPUT_REL_Y>; /* Y軸(縦)の動きを監視 */
-        scale-multiplier = <1>;
-        scale-divisor = <20>; /* 感度調整: 数値を大きくすると遅くなる */
         
-        /* バインディング: <マイナス方向の動作>, <プラス方向の動作> */
-        /* 通常: 上スクロール, 下スクロール */
-        bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
+        /* 修正点1: 生データの「X軸」を監視する（90度回転しているので、生のXが縦になる） */
+        x-input-code = <INPUT_REL_X>; 
+        
+        scale-multiplier = <1>;
+        /* 修正点2: 数値を64まで上げて感度を下げる（ノイズ対策） */
+        scale-divisor = <64>; 
+        
+        /* バインディング: 動きが逆なら UP と DOWN を入れ替えてください */
+        bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
     };
 
-    /* 左手設定その3：横スクロール (レイヤー1, 2のみ) */
+    /* 横スクロール (レイヤー1, 2のみ) */
     scroll_listener_x {
         compatible = "zmk,input-behavior-listener";
         device = <&trackball_split>;
-        layers = <1 2>; /* 有効にするレイヤー */
+        layers = <1 2>; 
         evt-type = <INPUT_EV_REL>;
-        x-input-code = <INPUT_REL_X>; /* X軸(横)の動きを監視 */
-        scale-multiplier = <1>;
-        scale-divisor = <20>; /* 感度調整 */
         
-        /* バインディング: <マイナス方向の動作>, <プラス方向の動作> */
-        /* 通常: 左スクロール, 右スクロール */
+        /* 修正点3: 生データの「Y軸」を監視する（90度回転しているので、生のYが横になる） */
+        x-input-code = <INPUT_REL_Y>; 
+        
+        scale-multiplier = <1>;
+        scale-divisor = <64>; 
+        
+        /* バインディング: 動きが逆なら LEFT と RIGHT を入れ替えてください */
         bindings = <&msc SCRL_LEFT>, <&msc SCRL_RIGHT>;
     };
 };
