@@ -65,25 +65,26 @@
         };
     };
 
-trackball_split_listener: trackball_split_listener {
+	trackball_split_listener: trackball_split_listener {
 		compatible = "zmk,input-listener";
 		device = <&trackball_split>;
 		status = "okay";
 		
-		/* カーソル移動用: ここも Y_INVERT に変更 */
+		/* カーソル移動用（変更なし） */
 		input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>;
 
 		scroller {
-			layers = <0 1 2 3 4>;
-			/* スクロール処理の流れ:
-			   1. zip_xy_transform: センサーの向き補正。
-			      ここで「X_INVERT」を「Y_INVERT」に変えました。
-			      これで右も上も、さっきとは逆（＝正しい方向）に出力されます。
-			*/
+			layers = <0>;
 			input-processors = 
+				/* 1. センサー処理: 上下は合っていたので、この設定は維持します */
 				<&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>,
+				
+				/* 2. スクロールに変換 */
 				<&zip_xy_to_scroll_mapper>,
-				<&zip_scroll_transform (0)>, /* スクロール反転は一旦なし(0)にします */
+				
+				/* 3. 修正箇所: 「左右」だけ逆だったので、横スクロール(X)を反転させます */
+				<&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT)>,
+				
 				<&zip_scroll_scaler 1 128>;
 			process-next;
 		};
