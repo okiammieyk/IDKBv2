@@ -27,7 +27,8 @@
         codes = <INPUT_REL_Y>;
     };
 
-    /* 左手用: XY移動をスクロール(WHEEL/HWHEEL)に変換するマッパー */
+    /* 左手用: XY移動をスクロールに変換するマッパー */
+    /* west.ymlを入れたので、この機能が使えるようになります！ */
     zip_xy_to_scroll_mapper: zip_xy_to_scroll_mapper {
         compatible = "zmk,input-processor-mapper";
         #input-processor-cells = <0>;
@@ -35,7 +36,7 @@
         map = <INPUT_REL_X INPUT_REL_HWHEEL>, <INPUT_REL_Y INPUT_REL_WHEEL>;
     };
 
-    /* 左手用: スクロール速度調整用スケーラー */
+    /* 左手用: スクロール速度調整 */
     zip_scroll_scaler: zip_scroll_scaler {
         compatible = "zmk,input-processor-scaler";
         #input-processor-cells = <2>;
@@ -104,14 +105,13 @@
         device = <&trackball_split>;
         status = "okay";
         input-processors = <
-            /* 1. まず物理的な向きを補正 (これをしないとスクロール方向もおかしくなる) */
+            /* 1. 物理的な向きを補正 */
             &zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)
             
-            /* 2. 補正後の動きをスクロール信号に変換 */
+            /* 2. 補正後の動きをスクロール信号に変換 (west.ymlのおかげで動く) */
             &zip_xy_to_scroll_mapper
             
             /* 3. スクロール速度を調整 (1/20) */
-            /* 速すぎる場合は 1 32、遅すぎる場合は 1 10 などで調整 */
             &zip_scroll_scaler 1 20
         >;
     };
