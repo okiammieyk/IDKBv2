@@ -46,8 +46,12 @@
 	trackball_listener: trackball_listener {
 		compatible = "zmk,input-listener";
 		device = <&trackball>;
-		/* 修正箇所: SWAP と X_INVERT の組み合わせに変更 */
-		input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>;
+		/* 1. zip_xy_transform: 軸の向きを補正 (SWAP + X反転)
+		   2. zip_xy_scaler: 速度を1.5倍にする (3/2 = 1.5) 
+		*/
+		input-processors = 
+			<&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+			<&zip_xy_scaler 3 2>;
 	};
 
 
@@ -65,21 +69,23 @@
 		compatible = "zmk,input-listener";
 		device = <&trackball_split>;
 		status = "okay";
-		/* カーソル移動用: メイン側と同じ補正(SWAP + X_INVERT)を適用 */
+		
+		/* 左側のカーソル移動（もし使う場合）も向きを合わせる */
 		input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>;
 
 		scroller {
 			layers = <0>;
-			/* 修正ポイント:
-			   1. 先頭に zip_xy_transform を追加し、センサーの向き(SWAP+X_INVERT)を正してからスクロール機能に渡します。
-			      これで「右→右スクロール」「下→下スクロール」になります。
-			   2. zip_scroll_scaler を <1 85> に変更し、速度を約1.5倍(128/85倍)にしました。
+			/* スクロール処理の流れ:
+			   1. zip_xy_transform: まずセンサーの向きを正しく直す (ここが重要)
+			   2. zip_xy_to_scroll_mapper: 直った信号をスクロール(X→横、Y→縦)に変換
+			   3. zip_scroll_transform: スクロールの向き調整 (必要に応じて)
+			   4. zip_scroll_scaler: スクロール速度調整
 			*/
 			input-processors = 
 				<&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
 				<&zip_xy_to_scroll_mapper>,
 				<&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT)>,
-				<&zip_scroll_scaler 1 85>;
+				<&zip_scroll_scaler 1 128>;
 			process-next;
 		};
 	};
