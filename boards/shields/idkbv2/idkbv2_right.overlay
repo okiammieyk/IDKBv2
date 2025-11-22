@@ -44,11 +44,11 @@
     };
 
 	trackball_listener: trackball_listener {
-        compatible = "zmk,input-listener";
-        device = <&trackball>;
-        /* 修正箇所: Y_INVERT を削除しました */
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>;
-    };
+		compatible = "zmk,input-listener";
+		device = <&trackball>;
+		/* 修正箇所: 軸の入れ替え(SWAP)と、Y軸反転(Y_INVERT)を追加 */
+		input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>;
+	};
 
 
     split_inputs {
@@ -61,18 +61,20 @@
         };
     };
 
-    trackball_split_listener: trackball_split_listener {
-        compatible = "zmk,input-listener";
-        device = <&trackball_split>;
-        status = "okay";
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>;
-        scroller {
-            layers = <0>;
-            input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT)>, <&zip_scroll_scaler 1 128>;
-            process-next;
-        };
-    };
-
+	trackball_split_listener: trackball_split_listener {
+		compatible = "zmk,input-listener";
+		device = <&trackball_split>;
+		status = "okay";
+		/* 修正箇所: 同じく SWAP | Y_INVERT に変更 */
+		input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>;
+		
+        /* 注意: スクロール動作もトラックボールで行う場合、ここも調整が必要になる可能性がありますが、まずはカーソル移動を優先します */
+		scroller {
+			layers = <0>;
+			input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT)>, <&zip_scroll_scaler 1 128>;
+			process-next;
+		};
+	};
 
 };
 
