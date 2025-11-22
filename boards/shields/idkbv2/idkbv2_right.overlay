@@ -2,6 +2,7 @@
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
 #include <dt-bindings/input/input-event-codes.h>
+#include <dt-bindings/zmk/mouse.h> /* マウススクロール(&msc)を使うために必要 */
 #include "layouts.dtsi"
 
 / {
@@ -9,17 +10,15 @@
         zmk,physical-layout = &physical_layout0;
     };
 
-    /* ▼▼▼ 定義エリア ▼▼▼ */
+    /* ▼▼▼ 1. 定義エリア ▼▼▼ */
 
-    /* 右手用: 横移動スケーラー */
+    /* 右手用スケーラー */
     zip_x_scaler: zip_x_scaler {
         compatible = "zmk,input-processor-scaler";
         #input-processor-cells = <2>;
         type = <INPUT_EV_REL>;
         codes = <INPUT_REL_X>;
     };
-
-    /* 右手用: 縦移動スケーラー */
     zip_y_scaler: zip_y_scaler {
         compatible = "zmk,input-processor-scaler";
         #input-processor-cells = <2>;
@@ -27,21 +26,23 @@
         codes = <INPUT_REL_Y>;
     };
 
-    /* 左手用: XY移動をスクロールに変換するマッパー */
-    /* west.ymlを入れたので、この機能が使えるようになります！ */
-    zip_xy_to_scroll_mapper: zip_xy_to_scroll_mapper {
-        compatible = "zmk,input-processor-mapper";
-        #input-processor-cells = <0>;
-        type = <INPUT_EV_REL>;
-        map = <INPUT_REL_X INPUT_REL_HWHEEL>, <INPUT_REL_Y INPUT_REL_WHEEL>;
+    /* 左手用: 動作定義 (Behavior Listener 用) */
+    /* 移動量をZMKの「スクロール動作」に変換する設定 */
+    ib_scroll_x: ib_scroll_x {
+        compatible = "zmk,input-behavior-scaler";
+        #binding-cells = <2>;
+        evt-type = <INPUT_EV_REL>;
+        input-code = <INPUT_REL_X>;
+        /* X軸の動きを「横スクロール(SCRL_LEFT/RIGHT)」に変換 */
+        bindings = <&msc SCRL_LEFT>, <&msc SCRL_RIGHT>;
     };
-
-    /* 左手用: スクロール速度調整 */
-    zip_scroll_scaler: zip_scroll_scaler {
-        compatible = "zmk,input-processor-scaler";
-        #input-processor-cells = <2>;
-        type = <INPUT_EV_REL>;
-        codes = <INPUT_REL_WHEEL INPUT_REL_HWHEEL>;
+    ib_scroll_y: ib_scroll_y {
+        compatible = "zmk,input-behavior-scaler";
+        #binding-cells = <2>;
+        evt-type = <INPUT_EV_REL>;
+        input-code = <INPUT_REL_Y>;
+        /* Y軸の動きを「縦スクロール(SCRL_UP/DOWN)」に変換 */
+        bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
     };
 
     /* ▲▲▲ 定義エリアここまで ▲▲▲ */
@@ -79,7 +80,7 @@
             ;
     };
 
-    /* 右手：マウスカーソル (高速移動) */
+    /* 右手：常にマウスカーソル */
     trackball_listener: trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
@@ -99,24 +100,40 @@
         };
     };
 
-    /* 左手：常時スクロール */
+    /* 左手設定その1：通常レイヤー（レイヤー0）ではマウスカーソル */
+    /* 注意: ここでレイヤー指定はできないため、レイヤー1,2でもカーソルも同時に動いてしまう可能性があります */
     trackball_split_listener: trackball_split_listener {
         compatible = "zmk,input-listener";
         device = <&trackball_split>;
         status = "okay";
         input-processors = <
-            /* 1. 物理的な向きを補正 */
             &zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)
-            
-            /* 2. 補正後の動きをスクロール信号に変換 (west.ymlのおかげで動く) */
-            &zip_xy_to_scroll_mapper
-            
-            /* 3. スクロール速度を調整 (1/20) */
-            &zip_scroll_scaler 1 20
+            &zip_x_scaler 5 2
+            &zip_y_scaler 1 1
         >;
+    };
+
+    /* 左手設定その2：特定レイヤー（1, 2）の時だけスクロール発動 */
+    /* ここで badjeff のモジュールを使用します */
+    scroll_listener {
+        compatible = "zmk,input-behavior-listener";
+        device = <&trackball_split>;
+        
+        /* ★ここに有効にしたいレイヤー番号をスペース区切りで書く★ */
+        layers = <1 2>; 
+        
+        evt-type = <INPUT_EV_REL>;
+        x-input-code = <INPUT_REL_X>;
+        y-input-code = <INPUT_REL_Y>;
+        scale-multiplier = <1>;
+        scale-divisor = <1>;
+        
+        /* 定義したスクロール動作をバインド (速度調整は数値 1 20 で行う) */
+        bindings = <&ib_scroll_x 1 20>, <&ib_scroll_y 1 20>;
     };
 };
 
+/* 以下省略（physical_layout0, pinctrl, spi0 は元のまま） */
 &physical_layout0 {
     kscan = <&kscan0>;
     transform = <&default_transform>;
