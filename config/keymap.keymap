@@ -34,10 +34,10 @@
 
         layer_1 {
             bindings = <
-&none  &none  &none  &kp AT_SIGN   &kp EXCLAMATION       &kp QUESTION           &none  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &none  &none
-&none  &none  &none  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &none  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &none  &none
-&none  &none  &none  &none         &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &none  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &none  &none
-&none  &none  &none  &none         &none                 &none                  &none  &kp COLON        &kp KP_NUMBER_0  &kp MINUS        &none  &none
+&none  &none  &kp AT_SIGN   &kp EXCLAMATION       &kp QUESTION           &none  &none  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &none  &none
+&none  &none  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &none  &none  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &none  &none
+&none  &none  &none         &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &none  &none  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &none  &none
+&none  &none  &none         &none                 &none                  &none  &none  &kp COLON        &kp KP_NUMBER_0  &kp MINUS        &none  &none
             >;
         };
 
@@ -69,5 +69,5 @@
 &trans  &trans         &trans             &none        &none            &none        &none             &none         &none              &kp LEFT  &kp DOWN      &kp RIGHT
             >;
         };
-    }; /* ← keymap の閉じカッコはここに移動しました */
+    };
 };
