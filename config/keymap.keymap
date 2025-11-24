@@ -13,7 +13,8 @@
             wait-ms = <0>;
             tap-ms = <0>;
             bindings = <&mkp LCLK>, <&macro_wait_time 500>, <&to 0>;
-               // 3. レイヤー0 (基本レイヤー) へ強制移動
+
+            // 3. レイヤー0 (基本レイヤー) へ強制移動
         };
     };
 
@@ -62,9 +63,9 @@
 
         layer_4 {
             bindings = <
-&trans  &kp LC(MINUS)  &kp LC(SEMICOLON)  &kp LG(V)    &kp LC(C)        &kp LC(V)    &none             &none         &none              &none     &none         &trans
+&trans  &kp LC(MINUS)  &kp LC(SEMICOLON)  &kp LG(V)    &kp LC(C)        &kp LC(V)    &mkp LCLK         &none         &none              &none     &none         &trans
 &trans  &none          &none              &kp LG(TAB)  &kp LA(LS(TAB))  &kp LA(TAB)  &mkp_exit         &kp LG(UP)    &mkp RCLK          &none     &none         &trans
-&trans  &none          &none              &none        &kp LC(LS(TAB))  &kp LC(TAB)  &kp LS(LC(LEFT))  &kp LG(DOWN)  &kp LS(LC(RIGHT))  &none     &kp UP_ARROW  &trans
+&trans  &none          &none              &none        &kp LC(LS(TAB))  &kp LC(TAB)  &kp LS(LG(LEFT))  &kp LG(DOWN)  &kp LS(LG(RIGHT))  &none     &kp UP_ARROW  &trans
 &trans  &trans         &trans             &none        &none            &none        &none             &none         &none              &kp LEFT  &kp DOWN      &kp RIGHT
             >;
         };
