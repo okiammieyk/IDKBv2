@@ -46,13 +46,10 @@
 	trackball_listener: trackball_listener {
 		compatible = "zmk,input-listener";
 		device = <&trackball>;
-		/* 1. zip_xy_transform: 軸の向きを補正 (SWAP + X反転)
-		   2. zip_xy_scaler: 速度を1.5倍にする (3/2 = 1.5) 
-		*/
+		/* 1. zip_xy_transform: 軸の向きを補正 (SWAP + X反転)*/
 		input-processors = 
 			<&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
-			<&zip_xy_scaler 3 2>,
-			<&zip_temp_layer 0 100000>;
+			<&zip_temp_layer 4 100000>;
 	};
 
     split_inputs {
@@ -73,7 +70,7 @@
 		/* カーソル移動用（変更なし） */
 		input-processors = 
 			<&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>,
-			<&zip_temp_layer 0 100000>;
+			<&zip_temp_layer 4 100000>;
 
 		scroller {
 			layers = <0>;
