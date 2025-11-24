@@ -6,16 +6,6 @@
 / {
     macros {
         /* マクロ定義: 右クリックして、少し待ってからレイヤー0に戻る */
-
-        mkp_exit: mkp_exit {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <0>;
-            tap-ms = <0>;
-            bindings = <&mkp LCLK>, <&macro_wait_time 9000>, <&to 0>;
-
-            // 3. レイヤー0 (基本レイヤー) へ強制移動
-        };
     };
 
     keymap {
