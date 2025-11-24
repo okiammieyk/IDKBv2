@@ -63,10 +63,10 @@
 
         layer_4 {
             bindings = <
-&trans  &kp LC(MINUS)  &kp LC(SEMICOLON)  &kp LG(V)    &kp LC(C)        &kp LC(V)    &mkp LCLK         &none         &none              &none     &none         &trans
-&trans  &none          &none              &kp LG(TAB)  &kp LA(LS(TAB))  &kp LA(TAB)  &mkp_exit         &kp LG(UP)    &mkp RCLK          &none     &none         &trans
-&trans  &none          &none              &none        &kp LC(LS(TAB))  &kp LC(TAB)  &kp LS(LG(LEFT))  &kp LG(DOWN)  &kp LS(LG(RIGHT))  &none     &kp UP_ARROW  &trans
-&trans  &trans         &trans             &none        &none            &none        &none             &none         &none              &kp LEFT  &kp DOWN      &kp RIGHT
+&kp TAB           &kp LC(MINUS)  &kp LC(SEMICOLON)  &kp LC(C)        &kp LC(V)    &kp LG(V)  &none  &none             &none             &none              &none         &kp BACKSPACE
+&kp CAPS          &kp LC(A)      &kp LC(D)          &kp LG(TAB)      &kp LA(TAB)  &none      &none  &mkp LCLK         &kp LG(UP_ARROW)  &mkp RCLK          &none         &kp ENTER
+&kp LEFT_SHIFT    &kp LC(Z)      &kp LC(X)          &kp LC(LS(TAB))  &kp LC(TAB)  &none      &none  &kp LG(LS(LEFT))  &kp LG(DOWN)      &kp LG(LS(RIGHT))  &kp UP_ARROW  &none
+&kp LEFT_CONTROL  &kp LEFT_WIN   &kp LEFT_ALT       &none            &none        &none      &to 0  &none             &none             &kp LEFT           &kp DOWN      &kp RIGHT
             >;
         };
     };
