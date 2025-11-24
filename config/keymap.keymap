@@ -1,20 +1,19 @@
-#include <behaviors.dtsi>
-#include <dt-bindings/zmk/backlight.h>
-#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/mouse.h>
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/pointing.h>
 
 / {
     macros {
         /* マクロ定義: 右クリックして、少し待ってからレイヤー0に戻る */
+
         mkp_exit: mkp_exit {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <0>;
             tap-ms = <0>;
-            bindings
-                = <&mkp RCLK>            // 1. 即座に右クリック
-                , <&macro_wait_time 500> // 2. 500ms 待機 (ダブルクリック猶予)
-                , <&to 0>;               // 3. レイヤー0 (基本レイヤー) へ強制移動
+            bindings = <&mkp LCLK>, <&macro_wait_time 500>, <&to 0>;
+               // 3. レイヤー0 (基本レイヤー) へ強制移動
         };
     };
 
@@ -22,12 +21,13 @@
         compatible = "zmk,keymap";
 
         /* Layer 0: キーボード操作用レイヤー（文字入力） */
+
         layer_0 {
             bindings = <
-&kp TAB    &kp Q     &kp W     &kp E      &kp R      &kp T      &kp Y      &kp U      &kp I      &kp O      &kp P      &kp BSPC
-&kp ESC    &kp A     &kp S     &kp D      &kp F      &kp G      &kp H      &kp J      &kp K      &kp L      &kp SEMI   &kp SQT
-&kp LSHFT  &kp Z     &kp X     &kp C      &kp V      &kp B      &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp RSHFT
-&kp LCTRL  &kp LGUI  &kp LALT  &kp SPACE  &kp SPACE  &kp SPACE  &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &kp RALT   &kp RCTRL
+&kp TAB    &kp Q     &kp W     &kp E      &kp R      &kp T      &kp Y     &kp U     &kp I      &kp O      &kp P     &kp BSPC
+&kp ESC    &kp A     &kp S     &kp D      &kp F      &kp G      &kp H     &kp J     &kp K      &kp L      &kp SEMI  &kp SQT
+&kp LSHFT  &kp Z     &kp X     &kp C      &kp V      &kp B      &kp N     &kp M     &kp COMMA  &kp DOT    &kp FSLH  &kp RSHFT
+&kp LCTRL  &kp LGUI  &kp LALT  &kp SPACE  &kp SPACE  &kp SPACE  &kp LEFT  &kp DOWN  &kp UP     &kp RIGHT  &kp RALT  &kp RCTRL
             >;
         };
 
@@ -59,12 +59,13 @@
         };
 
         /* Layer 4: マウス操作中レイヤー（Auto Mouse Layer）*/
+
         layer_4 {
             bindings = <
-&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none      &none
-&none  &none  &none  &none  &none  &none  &mkp_exit  &none  &none  &none  &none      &none
-&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none      &none
-&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none      &none
+&trans  &kp LC(MINUS)  &kp LC(SEMICOLON)  &kp LG(V)    &kp LC(C)        &kp LC(V)    &none             &none         &none              &none     &none         &trans
+&trans  &none          &none              &kp LG(TAB)  &kp LA(LS(TAB))  &kp LA(TAB)  &mkp_exit         &kp LG(UP)    &mkp RCLK          &none     &none         &trans
+&trans  &none          &none              &none        &kp LC(LS(TAB))  &kp LC(TAB)  &kp LS(LC(LEFT))  &kp LG(DOWN)  &kp LS(LC(RIGHT))  &none     &kp UP_ARROW  &trans
+&trans  &trans         &trans             &none        &none            &none        &none             &none         &none              &kp LEFT  &kp DOWN      &kp RIGHT
             >;
         };
     }; /* ← keymap の閉じカッコはここに移動しました */
