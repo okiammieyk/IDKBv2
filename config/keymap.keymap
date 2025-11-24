@@ -25,19 +25,19 @@
 
         layer_0 {
             bindings = <
-&kp TAB    &kp Q     &kp W     &kp E      &kp R      &kp T      &kp Y     &kp U     &kp I      &kp O      &kp P     &kp BSPC
-&kp ESC    &kp A     &kp S     &kp D      &kp F      &kp G      &kp H     &kp J     &kp K      &kp L      &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z     &kp X     &kp C      &kp V      &kp B      &kp N     &kp M     &kp COMMA  &kp DOT    &kp FSLH  &kp RSHFT
-&kp LCTRL  &kp LGUI  &kp LALT  &kp SPACE  &kp SPACE  &kp SPACE  &kp LEFT  &kp DOWN  &kp UP     &kp RIGHT  &kp RALT  &kp RCTRL
+&kp TAB    &kp Q     &kp W     &kp E      &kp R      &kp T      &kp Y      &kp U      &kp I      &kp O     &kp P         &kp BSPC
+&kp ESC    &kp A     &kp S     &kp D      &kp F      &kp G      &kp H      &kp J      &kp K      &kp L     &kp MINUS     &kp ENTER
+&kp LSHFT  &kp Z     &kp X     &kp C      &kp V      &kp B      &kp N      &kp M      &kp COMMA  &kp DOT   &kp UP_ARROW  &kp RSHFT
+&kp LCTRL  &kp LGUI  &kp LALT  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp LEFT  &kp DOWN      &kp RIGHT
             >;
         };
 
         layer_1 {
             bindings = <
-&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &kp AT_SIGN   &kp EXCLAMATION       &kp QUESTION           &none  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &none  &none
+&none  &none  &none  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &none  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &none  &none
+&none  &none  &none  &none         &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &none  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &none  &none
+&none  &none  &none  &none         &none                 &none                  &none  &kp COLON        &kp KP_NUMBER_0  &kp MINUS        &none  &none
             >;
         };
 
