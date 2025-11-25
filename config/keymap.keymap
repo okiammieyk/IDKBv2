@@ -121,7 +121,7 @@
         jlv: jlv {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LA(J)>, <&macro_wait_time 100>, <&kp L &kp V &to 0>;
+            bindings = <&kp LA(J)>, <&macro_wait_time 500>, <&kp L &kp V &to 0>;
 
             label = "JLV";
         };
@@ -131,7 +131,7 @@
             #binding-cells = <0>;
             bindings =
                 <&kp LEFT_ALT>,
-                <&macro_wait_time 100>,
+                <&macro_wait_time 500>,
                 <&kp L &kp E &to 0>;
 
             label = "JLE";
@@ -142,7 +142,7 @@
             #binding-cells = <0>;
             bindings =
                 <&kp LEFT_ALT>,
-                <&macro_wait_time 100>,
+                <&macro_wait_time 500>,
                 <&kp J &kp L &kp I &to 0>;
 
             label = "JLI";
@@ -153,7 +153,7 @@
             #binding-cells = <0>;
             bindings =
                 <&kp LEFT_ALT>,
-                <&macro_wait_time 100>,
+                <&macro_wait_time 500>,
                 <&kp J &kp L &kp L &to 0>;
 
             label = "JLL";
@@ -164,7 +164,7 @@
             #binding-cells = <0>;
             bindings =
                 <&kp LEFT_ALT>,
-                <&macro_wait_time 100>,
+                <&macro_wait_time 500>,
                 <&kp J &kp L &kp M &to 0>;
 
             label = "JLM";
@@ -175,7 +175,7 @@
             #binding-cells = <0>;
             bindings =
                 <&kp LEFT_ALT>,
-                <&macro_wait_time 100>,
+                <&macro_wait_time 500>,
                 <&kp J &kp L &kp P &to 0>;
 
             label = "JLP";
@@ -186,7 +186,7 @@
             #binding-cells = <0>;
             bindings =
                 <&kp LEFT_ALT>,
-                <&macro_wait_time 100>,
+                <&macro_wait_time 500>,
                 <&kp J &kp L &kp D &kp C &to 0>;
 
             label = "JLDC";
@@ -197,7 +197,7 @@
             #binding-cells = <0>;
             bindings =
                 <&kp LEFT_ALT>,
-                <&macro_wait_time 100>,
+                <&macro_wait_time 500>,
                 <&kp J &kp L &kp D &kp R &to 0>;
 
             label = "JLDR";
