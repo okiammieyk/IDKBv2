@@ -121,56 +121,85 @@
         jlv: jlv {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LA(J) &kp L &kp V &to 0>;
+            bindings = <&kp LA(J)>, <&macro_wait_time 100>, <&kp L &kp V &to 0>;
+
             label = "JLV";
         };
 
         jle: jle {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_ALT &kp L &kp E &to 0>;
+            bindings =
+                <&kp LEFT_ALT>,
+                <&macro_wait_time 100>,
+                <&kp L &kp E &to 0>;
+
             label = "JLE";
         };
 
         jli: jli {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_ALT &kp J &kp L &kp I &to 0>;
+            bindings =
+                <&kp LEFT_ALT>,
+                <&macro_wait_time 100>,
+                <&kp J &kp L &kp I &to 0>;
+
             label = "JLI";
         };
 
         jlL: jlL {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_ALT &kp J &kp L &kp L &to 0>;
+            bindings =
+                <&kp LEFT_ALT>,
+                <&macro_wait_time 100>,
+                <&kp J &kp L &kp L &to 0>;
+
             label = "JLL";
         };
 
         jlm: jlm {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_ALT &kp J &kp L &kp M &to 0>;
+            bindings =
+                <&kp LEFT_ALT>,
+                <&macro_wait_time 100>,
+                <&kp J &kp L &kp M &to 0>;
+
             label = "JLM";
         };
 
         jlp: jlp {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_ALT &kp J &kp L &kp P &to 0>;
+            bindings =
+                <&kp LEFT_ALT>,
+                <&macro_wait_time 100>,
+                <&kp J &kp L &kp P &to 0>;
+
             label = "JLP";
         };
 
         jldc: jldc {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_ALT &kp J &kp L &kp D &kp C &to 0>;
+            bindings =
+                <&kp LEFT_ALT>,
+                <&macro_wait_time 100>,
+                <&kp J &kp L &kp D &kp C &to 0>;
+
             label = "JLDC";
         };
 
         jldr: jldr {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_ALT &kp J &kp L &kp D &kp R &to 0>;
+            bindings =
+                <&kp LEFT_ALT>,
+                <&macro_wait_time 100>,
+                <&kp J &kp L &kp D &kp R &to 0>;
+
             label = "JLDR";
         };
     };
