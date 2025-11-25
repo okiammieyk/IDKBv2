@@ -185,7 +185,7 @@
         layer_0 {
             bindings = <
 &kp TAB    &kp Q     &kp W     &kp E      &kp R      &kp T        &kp Y      &kp U      &kp I      &kp O     &kp P         &kp BSPC
-&kp ESC    &kp A     &kp S     &kp D      &kp F      &kp G        &kp H      &kp J      &kp K      &kp L     &kp MINUS     &kp ENTER
+&kp CAPS   &kp A     &kp S     &kp D      &kp F      &kp G        &kp H      &kp J      &kp K      &kp L     &kp MINUS     &kp ENTER
 &kp LSHFT  &kp Z     &kp X     &kp C      &kp V      &kp B        &kp N      &kp M      &kp COMMA  &kp DOT   &kp UP_ARROW  &kp RSHFT
 &kp LCTRL  &kp LGUI  &kp LALT  &kp SPACE  &kp SPACE  &lt 1 SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp LEFT  &kp DOWN      &kp RIGHT
             >;
@@ -220,8 +220,8 @@
 
         layer_4 {
             bindings = <
-&trans  &trans  &jlm    &jlv    &jlp    &jldc   &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &jlL    &jle    &jli    &jldr   &trans  &none   &nt     &trans  &trans  &trans
+&none   &none   &jlm    &jlv    &jlp    &jldc   &trans  &trans  &trans  &trans  &trans  &trans
+&none   &none   &jlL    &jle    &jli    &jldr   &none   &none   &nt     &none   &none   &none
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
