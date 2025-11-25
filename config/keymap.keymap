@@ -6,8 +6,6 @@
 
 / {
     macros {
-        /* マクロ定義: 右クリックして、少し待ってからレイヤー0に戻る */
-
         hgat: hgat {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -220,11 +218,11 @@
 
         layer_4 {
             bindings = <
-&none   &none   &jlm    &jlv    &jlp    &jldc   &trans  &trans  &trans  &trans  &trans  &trans
+&none   &none   &jlm    &jlv    &jlp    &jldc   &none   &none   &none   &none   &none   &none
 &none   &none   &jlL    &jle    &jli    &jldr   &none   &none   &nt     &none   &none   &none
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-            >;
+&none   &none   &none   &none   &none   &none   &none   &none   &none   &none   &none   &none
+&none   &none   &none   &none   &none   &none   &none   &none   &none   &none   &none   &none
+            >; 
         };
 
         layer_5 {
