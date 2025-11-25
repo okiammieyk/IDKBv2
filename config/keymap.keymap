@@ -1,11 +1,180 @@
 #include <dt-bindings/zmk/mouse.h>
 #include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
 / {
     macros {
         /* マクロ定義: 右クリックして、少し待ってからレイヤー0に戻る */
+
+        hgat: hgat {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(H) &kp G &kp A &kp T &to 0>;
+            label = "HGAT";
+        };
+
+        nsh: nsh {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(N) &kp S &kp H &to 0>;
+            label = "NSH";
+        };
+
+        hatt: hatt {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(H) &kp A &kp T &kp T>;
+            label = "HATT";
+        };
+
+        hatm: hatm {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(H) &kp A &kp T &kp M>;
+            label = "HATM";
+        };
+
+        hatb: hatb {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(H) &kp A &kp T &kp B>;
+            label = "HATB";
+        };
+
+        hsf: hsf {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(H) &kp S &kp F>;
+            label = "HSF";
+        };
+
+        hfc: hfc {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(H) &kp F &kp C>;
+            label = "HFC";
+        };
+
+        hso: hso {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(H) &kp S &kp O>;
+            label = "HSO";
+        };
+
+        hu: hu {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(H) &kp U>;
+            label = "HU";
+        };
+
+        hn: hn {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(H) &kp N>;
+            label = "HN";
+        };
+
+        hgab: hgab {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(H) &kp G &kp A &kp B &to 0>;
+            label = "HGAB";
+        };
+
+        hgal: hgal {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(H) &kp G &kp A &kp L &to 0>;
+            label = "HGAL";
+        };
+
+        hgar: hgar {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(H) &kp G &kp A &kp R &to 0>;
+            label = "HGAR";
+        };
+
+        hgr: hgr {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(H) &kp G &kp R &to 0>;
+            label = "HGR";
+        };
+
+        hgk: hgk {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(H) &kp G &kp K &to 0>;
+            label = "HGK";
+        };
+
+        nt: nt {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(N) &kp T &to 0>;
+            label = "NT";
+        };
+
+        jlv: jlv {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(J) &kp L &kp V &to 0>;
+            label = "JLV";
+        };
+
+        jle: jle {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(J) &kp L &kp E &to 0>;
+            label = "JLE";
+        };
+
+        jli: jli {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(J) &kp L &kp I &to 0>;
+            label = "JLI";
+        };
+
+        jlL: jlL {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(J) &kp L &kp L &to 0>;
+            label = "JLL";
+        };
+
+        jlm: jlm {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(J) &kp L &kp M &to 0>;
+            label = "JLM";
+        };
+
+        jlp: jlp {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(J) &kp L &kp P &to 0>;
+            label = "JLP";
+        };
+
+        jldc: jldc {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(J) &kp L &kp D &kp C &to 0>;
+            label = "JLDC";
+        };
+
+        jldr: jldr {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(J) &kp L &kp D &kp R &to 0>;
+            label = "JLDR";
+        };
     };
 
     keymap {
@@ -15,43 +184,50 @@
 
         layer_0 {
             bindings = <
-&kp TAB    &kp Q     &kp W     &kp E      &kp R      &kp T      &kp Y      &kp U      &kp I      &kp O     &kp P         &kp BSPC
-&kp ESC    &kp A     &kp S     &kp D      &kp F      &kp G      &kp H      &kp J      &kp K      &kp L     &kp MINUS     &kp ENTER
-&kp LSHFT  &kp Z     &kp X     &kp C      &kp V      &kp B      &kp N      &kp M      &kp COMMA  &kp DOT   &kp UP_ARROW  &kp RSHFT
-&kp LCTRL  &kp LGUI  &kp LALT  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp LEFT  &kp DOWN      &kp RIGHT
+&kp TAB    &kp Q     &kp W     &kp E      &kp R      &kp T        &kp Y      &kp U      &kp I      &kp O     &kp P         &kp BSPC
+&kp ESC    &kp A     &kp S     &kp D      &kp F      &kp G        &kp H      &kp J      &kp K      &kp L     &kp MINUS     &kp ENTER
+&kp LSHFT  &kp Z     &kp X     &kp C      &kp V      &kp B        &kp N      &kp M      &kp COMMA  &kp DOT   &kp UP_ARROW  &kp RSHFT
+&kp LCTRL  &kp LGUI  &kp LALT  &kp SPACE  &kp SPACE  &lt 1 SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp LEFT  &kp DOWN      &kp RIGHT
             >;
         };
 
         layer_1 {
             bindings = <
-&none  &none  &kp AT_SIGN   &kp EXCLAMATION       &kp QUESTION           &none  &none  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &none  &none
-&none  &none  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &none  &none  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &none  &none
-&none  &none  &none         &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &none  &none  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &none  &none
-&none  &none  &none         &none                 &none                  &none  &none  &kp COLON        &kp KP_NUMBER_0  &kp MINUS        &none  &none
+&bt BT_SEL 0  &none  &kp AT_SIGN   &kp EXCLAMATION       &kp QUESTION           &none  &none  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &none  &none
+&bt BT_SEL 1  &none  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &none  &none  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &none  &none
+&bt BT_SEL 2  &none  &none         &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &none  &none  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &none  &none
+&bt BT_SEL 3  &none  &none         &none                 &none                  &none  &none  &kp COLON        &kp KP_NUMBER_0  &kp MINUS        &none  &none
             >;
         };
 
         layer_2 {
             bindings = <
-&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
+&none  &hu    &hn        &kp LC(LS(COMMA))  &kp LC(LS(PERIOD))  &hatt  &none  &none  &none  &none  &none  &none
+&none  &none  &kp LC(L)  &kp LC(E)          &kp LC(R)           &hatm  &none  &to 3  &to 4  &none  &none  &none
+&none  &none  &hfc       &hso               &hsf                &hatb  &none  &none  &none  &none  &none  &none
+&none  &none  &none      &none              &none               &none  &none  &none  &none  &none  &none  &none
             >;
         };
 
         layer_3 {
             bindings = <
-&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
+&none  &none  &hgk   &hgat  &hgr   &none  &none  &none  &none  &none  &none  &none
+&none  &none  &hgal  &hgab  &hgar  &none  &none  &nsh   &none  &none  &none  &none
 &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
 &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
             >;
         };
 
-        /* Layer 4: マウス操作中レイヤー（Auto Mouse Layer）*/
-
         layer_4 {
+            bindings = <
+&trans  &trans  &jlm    &jlv    &jlp    &jldc   &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &jlL    &jle    &jli    &jldr   &trans  &none   &nt     &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        layer_5 {
             bindings = <
 &kp TAB           &kp LC(MINUS)  &kp LC(SEMICOLON)  &kp LC(C)        &kp LC(V)    &kp LG(V)  &none  &none             &none             &none              &none         &kp BACKSPACE
 &kp CAPS          &kp LC(A)      &kp LC(D)          &kp LG(TAB)      &kp LA(TAB)  &none      &none  &mkp LCLK         &kp LG(UP_ARROW)  &mkp RCLK          &none         &kp ENTER
