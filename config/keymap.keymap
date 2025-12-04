@@ -123,7 +123,7 @@
             #binding-cells = <0>;
             bindings =
                 <&kp LEFT_ALT>,
-                <&macro_wait_time 500>,
+                <&macro_wait_time 1000>,
                 <&kp J &kp L &kp V>;
 
             label = "JLV";
@@ -134,7 +134,7 @@
             #binding-cells = <0>;
             bindings =
                 <&kp LEFT_ALT>,
-                <&macro_wait_time 500>,
+                <&macro_wait_time 1000>,
                 <&kp J &kp L &kp E>;
 
             label = "JLE";
@@ -145,7 +145,7 @@
             #binding-cells = <0>;
             bindings =
                 <&kp LEFT_ALT>,
-                <&macro_wait_time 500>,
+                <&macro_wait_time 1000>,
                 <&kp J &kp L &kp I>;
 
             label = "JLI";
@@ -156,7 +156,7 @@
             #binding-cells = <0>;
             bindings =
                 <&kp LEFT_ALT>,
-                <&macro_wait_time 500>,
+                <&macro_wait_time 1000>,
                 <&kp J &kp L &kp L>;
 
             label = "JLL";
@@ -167,7 +167,7 @@
             #binding-cells = <0>;
             bindings =
                 <&kp LEFT_ALT>,
-                <&macro_wait_time 500>,
+                <&macro_wait_time 1000>,
                 <&kp J &kp L &kp M>;
 
             label = "JLM";
@@ -178,7 +178,7 @@
             #binding-cells = <0>;
             bindings =
                 <&kp LEFT_ALT>,
-                <&macro_wait_time 500>,
+                <&macro_wait_time 1000>,
                 <&kp J &kp L &kp P>;
 
             label = "JLP";
@@ -189,7 +189,7 @@
             #binding-cells = <0>;
             bindings =
                 <&kp LEFT_ALT>,
-                <&macro_wait_time 500>,
+                <&macro_wait_time 1000>,
                 <&kp J &kp L &kp D &kp C>;
 
             label = "JLDC";
@@ -200,7 +200,7 @@
             #binding-cells = <0>;
             bindings =
                 <&kp LEFT_ALT>,
-                <&macro_wait_time 500>,
+                <&macro_wait_time 1000>,
                 <&kp J &kp L &kp D &kp R>;
 
             label = "JLDR";
