@@ -9,14 +9,14 @@
         hgat: hgat {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LA(H) &kp G &kp A &kp T &to 0>;
+            bindings = <&kp LA(H) &kp G &kp A &kp T>;
             label = "HGAT";
         };
 
         nsh: nsh {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LA(N) &kp S &kp H &to 0>;
+            bindings = <&kp LA(N) &kp S &kp H>;
             label = "NSH";
         };
 
@@ -79,49 +79,52 @@
         hgab: hgab {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LA(H) &kp G &kp A &kp B &to 0>;
+            bindings = <&kp LA(H) &kp G &kp A &kp B>;
             label = "HGAB";
         };
 
         hgal: hgal {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LA(H) &kp G &kp A &kp L &to 0>;
+            bindings = <&kp LA(H) &kp G &kp A &kp L>;
             label = "HGAL";
         };
 
         hgar: hgar {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LA(H) &kp G &kp A &kp R &to 0>;
+            bindings = <&kp LA(H) &kp G &kp A &kp R>;
             label = "HGAR";
         };
 
         hgr: hgr {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LA(H) &kp G &kp R &to 0>;
+            bindings = <&kp LA(H) &kp G &kp R>;
             label = "HGR";
         };
 
         hgk: hgk {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LA(H) &kp G &kp K &to 0>;
+            bindings = <&kp LA(H) &kp G &kp K>;
             label = "HGK";
         };
 
         nt: nt {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LA(N) &kp T &to 0>;
+            bindings = <&kp LA(N) &kp T>;
             label = "NT";
         };
 
         jlv: jlv {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LA(J)>, <&macro_wait_time 500>, <&kp L &kp V &to 0>;
+            bindings =
+                <&kp LEFT_ALT>,
+                <&macro_wait_time 500>,
+                <&kp J &kp L &kp V>;
 
             label = "JLV";
         };
@@ -132,7 +135,7 @@
             bindings =
                 <&kp LEFT_ALT>,
                 <&macro_wait_time 500>,
-                <&kp L &kp E &to 0>;
+                <&kp J &kp L &kp E>;
 
             label = "JLE";
         };
@@ -143,7 +146,7 @@
             bindings =
                 <&kp LEFT_ALT>,
                 <&macro_wait_time 500>,
-                <&kp J &kp L &kp I &to 0>;
+                <&kp J &kp L &kp I>;
 
             label = "JLI";
         };
@@ -154,7 +157,7 @@
             bindings =
                 <&kp LEFT_ALT>,
                 <&macro_wait_time 500>,
-                <&kp J &kp L &kp L &to 0>;
+                <&kp J &kp L &kp L>;
 
             label = "JLL";
         };
@@ -165,7 +168,7 @@
             bindings =
                 <&kp LEFT_ALT>,
                 <&macro_wait_time 500>,
-                <&kp J &kp L &kp M &to 0>;
+                <&kp J &kp L &kp M>;
 
             label = "JLM";
         };
@@ -176,7 +179,7 @@
             bindings =
                 <&kp LEFT_ALT>,
                 <&macro_wait_time 500>,
-                <&kp J &kp L &kp P &to 0>;
+                <&kp J &kp L &kp P>;
 
             label = "JLP";
         };
@@ -187,7 +190,7 @@
             bindings =
                 <&kp LEFT_ALT>,
                 <&macro_wait_time 500>,
-                <&kp J &kp L &kp D &kp C &to 0>;
+                <&kp J &kp L &kp D &kp C>;
 
             label = "JLDC";
         };
@@ -198,7 +201,7 @@
             bindings =
                 <&kp LEFT_ALT>,
                 <&macro_wait_time 500>,
-                <&kp J &kp L &kp D &kp R &to 0>;
+                <&kp J &kp L &kp D &kp R>;
 
             label = "JLDR";
         };
@@ -209,57 +212,57 @@
 
         /* Layer 0: キーボード操作用レイヤー（文字入力） */
 
-        layer_0 {
+        Base {
             bindings = <
-&kp TAB    &kp Q     &kp W     &kp E      &kp R        &kp T        &kp Y      &kp U      &kp I      &kp O     &kp P         &kp BSPC
-&kp CAPS   &kp A     &kp S     &kp D      &kp F        &kp G        &kp H      &kp J      &kp K      &kp L     &kp MINUS     &kp ENTER
-&kp LSHFT  &kp Z     &kp X     &kp C      &kp V        &kp B        &kp N      &kp M      &kp COMMA  &kp DOT   &kp UP_ARROW  &kp RSHFT
-&kp LCTRL  &kp LGUI  &kp LALT  &kp SPACE  &lt 2 SPACE  &lt 1 SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp LEFT  &kp DOWN      &kp RIGHT
+&kp TAB    &kp Q     &kp W     &kp E      &kp R        &kp T      &kp Y      &kp U        &kp I      &kp O     &kp P         &kp BSPC
+&kp CAPS   &kp A     &kp S     &kp D      &kp F        &kp G      &kp H      &kp J        &kp K      &kp L     &kp MINUS     &kp ENTER
+&kp LSHFT  &kp Z     &kp X     &kp C      &kp V        &kp B      &kp N      &kp M        &kp COMMA  &kp DOT   &kp UP_ARROW  &kp RSHFT
+&kp LCTRL  &kp LGUI  &kp LALT  &kp SPACE  &lt 1 SPACE  &mkp LCLK  &mkp RCLK  &lt 5 SPACE  &kp SPACE  &kp LEFT  &kp DOWN      &kp RIGHT
             >;
         };
 
-        layer_1 {
+        EX {
             bindings = <
-&bt BT_SEL 0    &none  &kp AT_SIGN   &kp EXCLAMATION       &kp QUESTION           &none  &none  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &none  &none
-&bt BT_SEL 1    &none  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &none  &none  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &none  &none
-&bt BT_SEL 2    &none  &none         &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &none  &none  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &none  &none
-&bt BT_CLR_ALL  &none  &none         &none                 &none                  &none  &none  &kp COLON        &kp KP_NUMBER_0  &kp MINUS        &none  &none
+&bt BT_SEL 0    &none  &kp AT_SIGN   &kp EXCLAMATION       &kp QUESTION           &none   &none   &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &none  &none
+&bt BT_SEL 1    &none  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &none   &none   &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &none  &none
+&bt BT_SEL 2    &none  &kp PLUS      &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &none   &none   &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &none  &none
+&bt BT_CLR_ALL  &none  &none         &none                 &none                  &trans  &trans  &none            &kp KP_NUMBER_0  &none            &none  &none
             >;
         };
 
-        layer_2 {
+        PPT {
             bindings = <
-&none  &hu    &hn        &kp LC(LS(COMMA))  &kp LC(LS(PERIOD))  &hatt  &none  &none  &none  &none  &none  &none
-&none  &none  &kp LC(L)  &kp LC(E)          &kp LC(R)           &hatm  &none  &to 3  &to 4  &none  &none  &none
-&none  &none  &hfc       &hso               &hsf                &hatb  &none  &none  &none  &none  &none  &none
-&none  &none  &none      &none              &none               &none  &none  &none  &none  &none  &none  &none
+&none  &hu    &hn        &kp LC(LS(COMMA))  &kp LC(LS(PERIOD))  &hatt   &nt     &none  &hgat  &none  &none  &none
+&none  &none  &kp LC(L)  &kp LC(E)          &kp LC(R)           &hatm   &nsh    &hgal  &hgab  &hgar  &none  &none
+&none  &none  &hfc       &hso               &hsf                &hatb   &none   &jlp   &jlv   &jlm   &jldc  &none
+&none  &none  &none      &none              &none               &trans  &trans  &jlL   &jle   &jli   &jldr  &none
             >;
         };
 
-        layer_3 {
+        PPT1 {
             bindings = <
-&none  &none  &hgk   &hgat  &hgr   &none  &none  &none  &none  &none  &none  &none
-&none  &none  &hgal  &hgab  &hgar  &none  &none  &nsh   &none  &none  &none  &none
-&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
+&none  &none  &hgk   &hgat  &hgr   &none   &none   &none  &none  &none  &none  &none
+&none  &none  &hgal  &hgab  &hgar  &none   &none   &nsh   &none  &none  &none  &none
+&none  &none  &none  &none  &none  &none   &none   &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &trans  &trans  &none  &none  &none  &none  &none
             >;
         };
 
-        layer_4 {
+        PPT2 {
             bindings = <
-&none  &none  &jlm   &jlv   &jlp   &jldc  &none  &none  &none  &none  &none  &none
-&none  &none  &jlL   &jle   &jli   &jldr  &none  &none  &nt    &none  &none  &none
-&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
+&none  &none  &jlm   &jlv   &jlp   &jldc   &none   &none  &none  &none  &none  &none
+&none  &none  &jlL   &jle   &jli   &jldr   &none   &none  &nt    &none  &none  &none
+&none  &none  &none  &none  &none  &none   &none   &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &trans  &trans  &none  &none  &none  &none  &none
             >;
         };
 
-        layer_5 {
+        WIN {
             bindings = <
-&kp TAB           &kp LC(MINUS)  &kp LC(SEMICOLON)  &kp LC(C)        &kp LC(V)    &kp LG(V)  &none  &none             &none             &none              &none         &kp BACKSPACE
-&kp CAPS          &kp LC(A)      &kp LC(D)          &kp LG(TAB)      &kp LA(TAB)  &none      &none  &mkp LCLK         &kp LG(UP_ARROW)  &mkp RCLK          &none         &kp ENTER
-&kp LEFT_SHIFT    &kp LC(Z)      &kp LC(X)          &kp LC(LS(TAB))  &kp LC(TAB)  &none      &none  &kp LG(LS(LEFT))  &kp LG(DOWN)      &kp LG(LS(RIGHT))  &kp UP_ARROW  &none
-&kp LEFT_CONTROL  &kp LEFT_WIN   &kp LEFT_ALT       &none            &none        &none      &to 0  &none             &none             &kp LEFT           &kp DOWN      &kp RIGHT
+&none  &kp LC(MINUS)  &kp LC(SEMICOLON)  &kp LC(C)        &kp LC(V)    &kp LG(V)  &none      &none             &kp LG(UP)    &none              &none         &kp BACKSPACE
+&none  &none          &none              &kp LG(TAB)      &kp LA(TAB)  &none      &none      &kp LG(LS(LEFT))  &kp LG(DOWN)  &kp LG(LS(RIGHT))  &none         &kp ENTER
+&none  &none          &none              &kp LC(LS(TAB))  &kp LC(TAB)  &none      &none      &none             &none         &none              &kp UP_ARROW  &none
+&none  &none          &none              &none            &none        &mkp LCLK  &mkp RCLK  &none             &none         &kp LEFT           &kp DOWN      &kp RIGHT
             >;
         };
     };
